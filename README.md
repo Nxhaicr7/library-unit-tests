@@ -1,34 +1,14 @@
-# Library Management System – Unit Tests
+# Library Unit Tests
 
-Framework: **Jest + ts-jest** (TypeScript)
+Bộ unit test cho các chức năng Recommendations, Vector Search, AI Summaries, Dashboard Analytics và Notifications của hệ thống quản lý thư viện.
 
-## Cấu trúc thư mục
-```
-tests/
-  services.test.ts       # Test Gorse AI & Ollama Summary Service
-  gorse.service.test.ts  # Test chi tiết Gorse AI CRUD
-  ollama.service.test.ts # Test chi tiết Ollama generate & embedding
-  book.service.test.ts   # Test API Ebook CRUD (mock Prisma)
-  dashboard.test.ts      # Test Dashboard Stats & Activities
-  reliability.test.ts    # Test Tin cậy & Fallback mechanism
-```
+## Chạy theo từng sheet
+- `rtk node scripts/run-jest-proof.js --config jest.sheets.config.ts --runInBand --verbose --silent --noStackTrace tests/services/gorse.service.test.ts tests/assessment/recommendations.assessment.test.ts`
+- `rtk node scripts/run-jest-proof.js --config jest.sheets.config.ts --runInBand --verbose --silent --noStackTrace tests/services/qdrant.service.test.ts tests/assessment/vector-search.assessment.test.ts`
+- `rtk node scripts/run-jest-proof.js --config jest.sheets.config.ts --runInBand --verbose --silent --noStackTrace tests/services/ollama.service.test.ts tests/services/gemini.service.test.ts tests/assessment/ai-summaries.assessment.test.ts`
+- `rtk node scripts/run-jest-proof.js --config jest.sheets.config.ts --runInBand --verbose --silent --noStackTrace tests/api/dashboard.routes.test.ts tests/api/dashboard.extended-routes.test.ts`
+- `rtk node scripts/run-jest-proof.js --config jest.sheets.config.ts --runInBand --verbose --silent --noStackTrace tests/services/notification.service.test.ts tests/workers/notification.worker.test.ts tests/assessment/notifications.assessment.test.ts`
 
-## Chạy tests
-```bash
-npx jest --preset ts-jest tests/ --coverage
-```
-
-## Kết quả
-- Framework: Jest v29 + ts-jest
-- Tổng số test: 21 cases
-- Pass: 19 (90.5%)
-- Fail: 2 (9.5% — bugs phát hiện)
-- Coverage: ~80% trên các hàm được kiểm thử
-
-## Yêu cầu môi trường
-```bash
-npm install --save-dev jest ts-jest @types/jest
-```
-
-## GitHub
-https://github.com/Nxhaicr7/library-unit-tests
+## Tài liệu
+- `KiemThuDuAN/14_unit_final_submit.xlsx`
+- `KiemThuDuAN/COMMANDS.md`
